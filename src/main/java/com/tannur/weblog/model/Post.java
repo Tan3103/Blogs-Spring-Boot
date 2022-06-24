@@ -9,17 +9,18 @@ import javax.persistence.Id;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long post_id;
 
-    private String title, anons, full_text;
-    private int views;
+    private String title;
+    private String full_text;
+    private int user_id;
 
-    public Long getId() {
-        return id;
+    public Long getPost_id() {
+        return post_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPost_id(Long post_id) {
+        this.post_id = post_id;
     }
 
     public String getTitle() {
@@ -30,14 +31,6 @@ public class Post {
         this.title = title;
     }
 
-    public String getAnons() {
-        return anons;
-    }
-
-    public void setAnons(String anons) {
-        this.anons = anons;
-    }
-
     public String getFull_text() {
         return full_text;
     }
@@ -46,21 +39,20 @@ public class Post {
         this.full_text = full_text;
     }
 
-    public int getViews() {
-        return views;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setViews(int views) {
-        this.views = views;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public Post(){
     }
 
-    public Post(String title, String anons, String full_text, int views) {
+    public Post(String title, String full_text, int user_id) {
         this.title = title;
-        this.anons = anons;
         this.full_text = full_text;
-        this.views = views;
+        this.user_id = user_id;
     }
 }
