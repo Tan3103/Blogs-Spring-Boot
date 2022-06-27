@@ -58,6 +58,7 @@ public class BlogController {
         Post post = postRepository.findById(id).orElseThrow();
         post.setTitle(title);
         post.setFull_text(full_text);
+        post.setAuthor(post.getAuthor());
         postRepository.save(post);
         return "redirect:/blog";
     }
@@ -75,7 +76,19 @@ public class BlogController {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @GetMapping("/blog/{id}")
-    public String blogDetails(@PathVariable(value = "id") long id, Model model){
+    public String blogDetailsMy(@PathVariable(value = "id") long id, Model model){
+        if(!postRepository.existsById(id)){
+            return "redirect:/blog";
+        }
+        Optional<Post> post = postRepository.findById(id);
+        ArrayList<Post> res = new ArrayList<>();
+        post.ifPresent(res::add);
+        model.addAttribute("post", res);
+        return "blog-details-my";
+    }
+
+    @GetMapping("/blog/all/{id}")
+    public String blogDetailsAll(@PathVariable(value = "id") long id, Model model){
         if(!postRepository.existsById(id)){
             return "redirect:/blog";
         }

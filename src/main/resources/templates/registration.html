@@ -12,22 +12,26 @@
     <form th:action="@{/registration}" method="post" style="width: 22rem; text-align: center;">
         <br><br><br><br><br><br><br>
         <h1 class="alert alert-info">Add new user</h1>
-
+        <br>
         <div class="form-outline mb-4">
-            <input type="text" class="form-control" name="username">
-            <label class="form-label" style="margin-left: 0px;">User Name</label>
-            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;">
+            <input type="text" name="username" placeholder="User Name" class="form-control"><br>
 
-            </div>
+            <div class="form-notch">
+                <div class="form-notch-leading" style="width: 9px;"></div>
                 <div class="form-notch-middle" style="width: 88.8px;"></div>
                 <div class="form-notch-trailing"></div>
             </div>
         </div>
 
         <div class="form-outline mb-4">
-            <input type="password" id="form1Example2" class="form-control" name="password">
-            <label class="form-label" for="form1Example2" style="margin-left: 0px;">Password</label>
-            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64.8px;"></div><div class="form-notch-trailing"></div></div></div>
+            <input type="text" name="password" placeholder="Password" class="form-control"><br>
+
+            <div class="form-notch">
+                <div class="form-notch-leading" style="width: 9px;"></div>
+                <div class="form-notch-middle" style="width: 64.8px;"></div>
+                <div class="form-notch-trailing"></div>
+            </div>
+        </div>
 
         <div class="row mb-4">
             <div class="col d-flex justify-content-center">

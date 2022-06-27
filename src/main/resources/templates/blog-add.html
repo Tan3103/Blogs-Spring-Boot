@@ -9,7 +9,7 @@
 <header th:insert="blocks/header :: header"></header>
 
 <form th:action="@{/blog/add}" method="post" class="container mt-5 mb-5">
-    <h1>Add new</h1>
+    <h1 style="text-align: center;" class="alert alert-info">Add new</h1>
     <br>
     <input type="text" name="title" placeholder="Введите название статьи" class="form-control"><br>
     <textarea name="full_text" placeholder="Введите полный текст статьи" class="form-control"></textarea><br>

@@ -11,37 +11,19 @@
 <div class="container mt-5 mb-5">
     <h1>Редактирование статьи</h1>
     <div th:each="el : ${posts}">
-        <form th:action="@{/blog/{id}/edit}" method="post">
-            <input type="text" th:value="${el.title}" name="title" placeholder="Введите название" class="form-control"><br>
-            <textarea name="full_text" placeholder="Введите полный текст" class="form-control" th:text="${el.full_text}"/><br>
+        <form method="post">
+            <input type="text" th:value="${el.title}" name="title" placeholder="Введите название статьи" class="form-control"><br>
 
             <button type="submit" class="btn btn-success">Обновить</button>
-            <div><input type="submit" class="btn btn-warning" value="Добавить статью"/></div>
-
         </form>
     </div>
 </div>
 
-
-    <div th:each="el : ${posts}">
-        <form th:action="@{/blog/{id}/edit}" method="post" class="container mt-5 mb-5">
-            <h1>Редактирование статьи</h1>
-
-            <input type="text" th:value="${el.title}" name="title" placeholder="Введите название" class="form-control"><br>
-            <textarea name="full_text" placeholder="Введите полный текст" class="form-control" th:text="${el.full_text}"/><br>
-
-            <button type="submit" class="btn btn-success">Обновить</button>
-            <div><input type="submit" class="btn btn-warning" value="Добавить статью"/></div>
-
-        </form>
-    </div>
-
-
-<form th:action="@{/blog/add}" method="post" class="container mt-5 mb-5">
+<form method="post" class="container mt-5 mb-5">
     <h1>Add new</h1>
     <br>
     <input type="text" name="title" placeholder="Введите название статьи" class="form-control"><br>
-    <textarea name="full_text" placeholder="Введите полный текст статьи" class="form-control"></textarea><br>
+
     <div><input type="submit" class="btn btn-warning" value="Добавить статью"/></div>
 </form>
 

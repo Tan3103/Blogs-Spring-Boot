@@ -5,6 +5,7 @@ import com.tannur.weblog.model.User;
 import com.tannur.weblog.repo.PostRepository;
 import com.tannur.weblog.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,8 +36,10 @@ public class MainController {
     }
 
     @GetMapping("/blog-my")
-    public String blogMy(Model model){
-        Iterable<Post> posts = postRepository.findAll();
+    public String blogMy(@AuthenticationPrincipal User user, Model model){
+        Post posts = postRepository.findByAuthor(user);
+
+
         model.addAttribute("posts", posts);
         return "blog-my";
     }
