@@ -21,17 +21,24 @@ public class MainController {
 
     @Autowired
     private UserRepository userRepository;
+
     @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("title", "Главная страница");
-        return "blog-main";
+    public String home() {
+        return "main";
     }
 
     @GetMapping("/blog")
-    public String blogMain(Model model){
+    public String blogAll(Model model){
         Iterable<Post> posts = postRepository.findAll();
         model.addAttribute("posts", posts);
-        return "records";
+        return "blog-all";
+    }
+
+    @GetMapping("/blog-my")
+    public String blogMy(Model model){
+        Iterable<Post> posts = postRepository.findAll();
+        model.addAttribute("posts", posts);
+        return "blog-my";
     }
 
     @GetMapping("/registration")

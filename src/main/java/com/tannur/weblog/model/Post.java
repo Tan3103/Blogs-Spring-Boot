@@ -1,26 +1,30 @@
 package com.tannur.weblog.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long post_id;
+    private Long id;
 
     private String title;
     private String full_text;
-    private int user_id;
 
-    public Long getPost_id() {
-        return post_id;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User author;
+
+    public String getAuthorName(){
+        return author != null ? author.getUsername() : "<none>";
     }
 
-    public void setPost_id(Long post_id) {
-        this.post_id = post_id;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -39,20 +43,20 @@ public class Post {
         this.full_text = full_text;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public Post(){
     }
 
-    public Post(String title, String full_text, int user_id) {
+    public Post(String title, String full_text, User author) {
         this.title = title;
         this.full_text = full_text;
-        this.user_id = user_id;
+        this.author = author;
     }
 }
