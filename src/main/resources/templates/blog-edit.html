@@ -11,12 +11,12 @@
 <div class="container mt-5 mb-5">
     <br>
     <h1 style="text-align: center;" class="alert alert-info">Edit post</h1>
-    <div th:each="el : ${posts}">
+    <div th:each="el:${posts}">
         <form method="post">
             <input type="text" th:value="${el.title}" name="title" placeholder="Введите название статьи" class="form-control"><br>
-            <textarea name="full_text" placeholder="Введите полный текст статьи" class="form-control" th:text="${el.full_text}"/><br>
+            <textarea name="full_text" placeholder="Введите полный текст статьи" class="form-control" th:text="${el.full_text}"></textarea><br>
 
-            <button type="submit" class="btn btn-success">Обновить</button>
+            <button type="submit" class="btn btn-success">Update</button>
         </form>
     </div>
 </div>
