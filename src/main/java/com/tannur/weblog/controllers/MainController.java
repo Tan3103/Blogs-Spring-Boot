@@ -10,8 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 @Controller
@@ -37,7 +37,7 @@ public class MainController {
 
     @GetMapping("/blog-my")
     public String blogMy(@AuthenticationPrincipal User user, Model model){
-        Post posts = postRepository.findByAuthor(user);
+        Iterable<Post> posts = postRepository.findAllByAuthor(user);
 
 
         model.addAttribute("posts", posts);
@@ -51,13 +51,13 @@ public class MainController {
 
     @PostMapping("/registration")
     public String addUser(User user, Model model){
-        User userFromDb = userRepository.findByUsername(user.getUsername());
+        User userFromDb = userRepository.findByEmail(user.getEmail());
 
         if(userFromDb != null){
             model.addAttribute("Message", "User exists!");
             return "registration";
         }
-        user.setActive(true);
+
         user.setRoles(Collections.singleton(Role.USER));
         userRepository.save(user);
 

@@ -11,14 +11,21 @@
 <div class="container mt-5 mb-5">
     <br>
     <h1 style="text-align: center;" class="alert alert-info">Edit post</h1>
-    <div th:each="el:${posts}">
-        <form method="post">
-            <input type="text" th:value="${el.title}" name="title" placeholder="Введите название статьи" class="form-control"><br>
-            <textarea name="full_text" placeholder="Введите полный текст статьи" class="form-control" th:text="${el.full_text}"></textarea><br>
+    <form action="#"
+          th:action="@{/blog/update/{id}(id=${post.id})}"
+          th:object="${post}"
+          method="post">
 
-            <button type="submit" class="btn btn-success">Update</button>
-        </form>
-    </div>
+        <label for="title">Title: </label>
+        <input type="text" th:field="*{title}" id="title" placeholder="title" class="form-control">
+        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+        <br>
+        <label for="full_text">Full text: </label>
+        <input type="text" th:field="*{full_text}" id="full_text" placeholder="full_text" class="form-control">
+        <span th:if="${#fields.hasErrors('full_text')}" th:errors="*{full_text}"></span>
+        <br>
+        <input type="submit" value="Update" class="btn btn-success">
+    </form>
 </div>
 
 <div th:insert="blocks/footer :: footer"></div>
